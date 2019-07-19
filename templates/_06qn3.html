@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>E-Health - Prescription </title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/leaflet.css') }}">
+    </head>
+<div class=
+    <body>
+        <div class="col-md-5 centralize">
+            <small><b>Immediate Medical attention recommended!</b><br/>
+            Immediate contact with a medical professional or emergency services is advised</small><br/><br/>
+            <h4>Summary</h4>
+            <p><i> You are suffering from</i></p>
+            {% for key, value in prescription.items() %}
+            <span> {{key}}, </span>
+            {% endfor %}
+            <h5>Prescription</h5    >
+            <p><i> Here is a list of medications you could get to make you feel better </i></p>
+            {% for key, value in prescription.items() %}
+            <p><span class="drugs" style="color: blue;">{{ value }}</span> for the {{ key }}</p>
+            {% endfor %}
+            <h5 >Potential Infections</h5>
+            {% for key, value in infections.items() %}
+            <p><span class="drugs" style="color: blue;">{{ value }}</span></p>
+            {% endfor %}
+        </div>
+        <div class="col-md-5" style="margin: 10px auto;">
+            <h5>Hospitals Nearby</h5>
+            <p>Here are some hospitals nearby you can go to </p>
+        </div>
+       <div id="map"></div>
+        <p class="col-md-5" style="margin: 10px auto;"> &copy: <a href="{{ url_for('about') }}"> Copyright Consult 2019</a></p>
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
+            <script>
+                $("#ajaxcall").click(function(){
+                    $.ajax({
+                        type: 'POST',
+                        url: "/ajaxcall",
+                        data: {student_id: 1},
+                        dataType: "text",
+                        success: function(data){
+                            alert("Congratulations ", data)
+                        },
+                        error: function (error) {
+                            console.log("error" + error);
+                        }
+                    });
+                });
+                var map = L.map('map').setView([4.1489, 9.2879], 14);
+                L.Icon.Default.imagePath = '../static/images/'
+                mapLink =
+                    '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+                L.tileLayer(
+                    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; ' + mapLink + ' Contributors',
+                    maxZoom: 18,
+                    }).addTo(map);
+
+                var marker = L.marker([4.1489, 9.2879], {
+                    draggable: true,
+                    autoPan: true
+                }).addTo(map);
+                marker.bindPopup("<b>University Pharmacie</b><br>University fo Buea's medical unit.");
+
+                var marker1 = L.marker([4.15652, 9.288769], {
+                    draggable: true,
+                    autoPan: true
+                }).addTo(map);
+                marker1.bindPopup("<b>Amazing Pharmacie</b><br>Medical unit.");
+
+
+                var marker2 = L.marker([4.159002, 9.280014], {
+                    draggable: true,
+                    autoPan: true,
+                    content: 'true'
+                }).addTo(map);
+                marker2.bindPopup("<b>Pharmacie</b><br>Medical unit.");
+
+                /*
+                var popup = L.popup()
+                    .setLatLng([4.1489, 9.2879])
+                    .setContent("I am a standalone popup.")
+                    .openOn(mymap);
+                function onMapClick(e) {
+                    marker = new L.marker(e.latlng, {draggable:'true'});
+                    marker.on('dragend', function(event){
+                        var marker = event.target;
+                        var position = marker.getLatLng();
+                        marker.setLatLng(new L.LatLng(position.lat, position.lng),{draggable:'true'});
+                        map.panTo(new L.LatLng(position.lat, position.lng));
+                    });
+                     alert(marker.getLatLng())
+                    map.addLayer(marker);
+                };
+                map.on('click', onMapClick)
+                */
+            </script>
+        </div>
+    </body>
+</html>
