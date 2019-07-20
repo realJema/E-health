@@ -117,35 +117,25 @@ def qn1():
 
     if request.method == 'POST':
         # the_symptomes = symptomes(session['feel'])
-        return render_template('qn2.html')
+        return render_template('_05qn2.html')
     else:
-        return redirect(url_for('welcome'))
+        return redirect(url_for('submission'))
 
 @app.route('/qn2', methods=['GET', 'POST'])
 def qn2():
     session['feel2'] = []
 
-    # we will limit to 4 symptomes
+    # here we consider the check boxes of option
     try:
-        session['feel2'].append(request.form['optionsCheck0'])
-    except:
-        print('doesnt exist')
-    try:
-        session['feel2'].append(request.form['optionsCheck1'])
-    except:
-        print('doesnt exist')
-    try:
-        session['feel2'].append(request.form['optionsCheck2'])
-    except:
-        print('doesnt exist')
-    try:
-        session['feel2'].append(request.form['optionsCheck3'])
+        session['feel2'].append(request.form['option1'])
+        session['feel2'].append(request.form['option2'])
+        session['feel2'].append(request.form['option3'])
     except:
         print('doesnt exist')
 
-    the_prescription = prescription(session['feel2'])
-    the_Infections = infections(session['feel2'])
-    return render_template('qn2.html', prescription=the_prescription, infections=the_Infections)
+    # the_prescription = prescription(session['feel2'])
+    # the_Infections = infections(session['feel2'])
+    return render_template('_06qn3.html')
 
 @app.route('/logout')
 def logout():

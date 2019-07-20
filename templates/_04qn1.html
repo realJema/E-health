@@ -9,13 +9,13 @@
         <div class="col-md-5 centralize">
             <h1>Welcome {{ user }}.</h1>
             <!-- <p><a href="{{ url_for('index') }}">Continue</a></p> -->
-            <p>How are you feeling?</p>
+            <p>please fill in the following informations</p>
 
             <form class="form-group" action="{{ url_for('qn2') }}" method=post>
 
                 <p>I'm overweight or obese</p>
                 <div class="radio">
-                    <label> <input type="radio" name="optionsWeight" value="Dizzy" checked=""> Yes </label>
+                    <label> <input type="radio" name="optionsWeight" value="Dizzy"> Yes </label>
                 </div>
                 <div class="radio">
                     <label> <input type="radio" name="optionsWeight" value="Tired"> No </label>
@@ -27,7 +27,7 @@
 
                 <p>I smoke cigarettes</p>
                 <div class="radio">
-                    <label> <input type="radio" name="optionsCigarettes" value="Dizzy" checked=""> Yes </label>
+                    <label> <input type="radio" name="optionsCigarettes" value="Dizzy"> Yes </label>
                 </div>
                 <div class="radio">
                     <label> <input type="radio" name="optionsCigarettes" value="Tired"> No </label>
@@ -39,7 +39,7 @@
 
                 <p>I have high cholesterol</p>
                 <div class="radio">
-                    <label> <input type="radio" name="optionsCholesterol" value="Dizzy" checked=""> Yes </label>
+                    <label> <input type="radio" name="optionsCholesterol" value="Dizzy"> Yes </label>
                 </div>
                 <div class="radio">
                     <label> <input type="radio" name="optionsCholesterol" value="Tired"> No </label>
@@ -50,7 +50,7 @@
 
                 <p>I have hypertension</p>
                 <div class="radio">
-                    <label> <input type="radio" name="optionsHypertension" value="Dizzy" checked=""> Yes </label>
+                    <label> <input type="radio" name="optionsHypertension" value="Dizzy"> Yes </label>
                 </div>
                 <div class="radio">
                     <label> <input type="radio" name="optionsHypertension" value="Tired"> No </label>
@@ -61,14 +61,14 @@
 
                 <p>I have diabetes</p>
                 <div class="radio">
-                    <label> <input type="radio" name="optionsDiabetes" value="Dizzy" checked=""> Yes </label>
+                    <label> <input type="radio" name="optionsDiabetes" value="Dizzy"> Yes </label>
                 </div>
                 <div class="radio">
                     <label> <input type="radio" name="optionsDiabetes" value="Tired"> No </label>
                 </div>
                 <div class="radio">
                     <label> <input type="radio" name="optionsDiabetes" value="Anxious"> Don't Know </label>
-                </div>
+                </div><br/><br/>
                 <div class="navigate-btn">
                     <a class='btn btn-default' href="{{ url_for('login') }}" style="float: left;">&larr; Previous</a>
                     <button class='btn btn-primary' type="submit" class="submit_btn" style="float: right;"> Next </button>
