@@ -5,7 +5,7 @@
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
-
+        
         <!-- navbar -->
         <nav class="navbar navbar-light bg-primary">
           <a class="navbar-brand" href="#">
@@ -22,13 +22,18 @@
                     <a href="{{ url_for('symptome1') }}"> Symptomes </a>
                 </div> 
                 <div class="col-md-10 card info-bubble">
-                    <h5>Hello!</h5>
-                    <p>You're about to use a short(3 min), safe and anonymous health checkup. Your answers will be carefuly analyzed and you'll learn about possible causes of your symptomes.</p>
-                    <small>
-                        <i>A <b>medical test</b> is a medical procedure performed to detect, diagnose, or monitor diseases, disease processes, susceptibility, or to determine a course of treatment. Medical tests relate to clinical chemistry  and molecular diagnostics, and are typically performed in a medical laboratory.</i>
-                    </small>
+                    <h3>Terms of Service</h3>
+                    Before using the checkup, please read Terms of Service. Remember that:
+
+                    <ul>
+                        <li><b>Checkup is not a diagnosis</b>. Checkup is for informational purposes and is not qualified medical opinion.
+                        </li>
+                        <li><b>Do not use in emergencies</b>. In case of health emergency, call your local emergency number  immediately.</li>
+                        <li><b>Your data is safe</b>. Information that you provide is anonymous and not shared with anyone</li>
+                    </ul>
                     <div class="navigate-btn">
-                        <a class='btn btn-primary submit_btn' href="{{ url_for('terms') }}" style="float: right;">Next</a>
+                        <a class='btn btn-default' href="{{ url_for('index') }}" style="float: left;">&larr; Previous</a>
+                        <a class='btn btn-primary submit_btn' href="{{ url_for('login') }}" style="float: right;">Next</a>
                     </div>
                 </div>
             </div>
@@ -36,7 +41,5 @@
 
         <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-        <!-- Live chat module -->
-        <script src="//code.tidio.co/kjxntziiixyv6jor17mhg64fcfjyhrkf.js"></script>
     </body>
 </html>

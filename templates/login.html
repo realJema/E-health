@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>E-Health - Login</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        
+        <!-- navbar -->
+        <nav class="navbar navbar-light bg-primary">
+          <a class="navbar-brand" href="#">
+            E-Health
+          </a>
+        </nav>
+        <br/><br/><br/>
+        <div class="container col-md-8">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ url_for('index') }}"> Introduction </a>
+                    <a href="{{ url_for('terms') }}"> Terms & Cond...</a>
+                    <a href="{{ url_for('login') }}"> Login</a>
+                    <a href="#"> Introduction</a>
+                </div> 
+                <div class="col-md-10 card info-bubble">
+                <form role="form" action="{{ url_for('symptome1') }}" method=post>
+                    {% if session.user %}
+                    You are Logged In as {{ session['user'] }}
+                    <br/><br/><br/>
+
+                        <a class='btn btn-default' href="{{ url_for('logout') }}" style="float: left;">Logout</a>
+                        <a class='btn btn-primary' href="{{ url_for('symptome1') }}" style="float: right;">Next</a>
+
+                    {% else %}
+                        <div class="row">
+                            <label for="name">How may I call you?</label>
+                            <input type="text" name="user" placeholder="username" class="form-control" required>
+                        </div><br/>
+                        <div class="row">
+                            <select name="gender" class="col-md-6 form-control custom-select">
+                              <option selected>Male</option>
+                              <option>Female</option>
+                              <option>Other</option>
+                            </select>
+                            <div class="col-md-2"></div>
+                            <input class="col-md-4" name="age" placeholder="age" required>
+                        </div>
+                              <br/>
+
+                        <button type="submit" class="btn btn-primary submit_btn">Confirm</button>
+                {% endif %}
+                </form>
+                <br/><br/>
+
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>

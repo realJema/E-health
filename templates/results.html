@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title>E-Health - Results</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <!-- navbar -->
+        <nav class="navbar navbar-light bg-primary">
+          <a class="navbar-brand" href="#">
+            E-Health
+          </a>
+        </nav>
+        <br/><br/><br/>
+        <div class="container col-md-8">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ url_for('index') }}"> Introduction </a>
+                    <a href="{{ url_for('terms') }}"> Terms & Cond...</a>
+                    <a href="{{ url_for('login') }}"> Login</a>
+                    <a href="{{ url_for('symptome1') }}"> Symptomes </a>
+                    <a href="{{ url_for('results') }}"> Results </a>
+                </div> 
+                <div class="col-md-10 card info-bubble">
+                    <p>These are your results</p>
+
+                </div> 
+            </div> 
+        </div> 
+ 
+
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        </div>
+    </body>
+</html>

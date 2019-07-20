@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>E-Health - Symptomes</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+    </head>
+    <body>
+        <!-- navbar -->
+        <nav class="navbar navbar-light bg-primary">
+          <a class="navbar-brand" href="#">
+            E-Health
+          </a>
+        </nav>
+        <br/><br/><br/>
+        <div class="container col-md-8">
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ url_for('index') }}"> Introduction </a>
+                    <a href="{{ url_for('terms') }}"> Terms & Cond...</a>
+                    <a href="{{ url_for('login') }}"> Login</a>
+                    <a href="{{ url_for('symptome1') }}"> Symptomes </a>
+                </div> 
+                <div class="col-md-10 card info-bubble">
+                    <h1>Welcome {{ user }}.</h1>
+                    <form class="form-group" action="{{ url_for('symptome2') }}" method=post>
+
+                        <hr/>
+                            I'm overweight or obese
+                        <div class="form-group" style="float: right">
+                            <input type="radio" name="optionsWeight"> Yes
+                            <input type="radio" name="optionsWeight"> No
+                            <input type="radio" name="optionsWeight"> Don't Know
+                        </div>
+                        <hr/>
+                            I smoke cigarettes
+                        <div class="form-group" style="float: right">
+                            <input type="radio" name="optionsCigarettes" value="Dizzy"> Yes
+                            <input type="radio" name="optionsCigarettes" value="Tired"> No
+                            <input type="radio" name="optionsCigarettes" value="Anxious"> Don't Know
+                        </div>
+                        <hr/>
+                            I have high cholesterol
+                        <div class="form-group" style="float: right">
+                            <input type="radio" name="optionsCholesterol" value="Dizzy"> Yes
+                            <input type="radio" name="optionsCholesterol" value="Tired"> No
+                            <input type="radio" name="optionsCholesterol" value="Anxious"> Don't Know
+                        </div>
+                        <hr/>
+                            I have hypertension
+                        <div class="form-group" style="float: right">
+                            <input type="radio" name="optionsHypertension" value="Dizzy"> Yes
+                            <input type="radio" name="optionsHypertension" value="Tired"> No
+                            <input type="radio" name="optionsHypertension" value="Anxious"> Don't Know
+                        </div>
+                        <hr/>
+                            I have diabetes
+                        <div class="form-group" style="float: right">
+                            <input type="radio" name="optionsDiabetes" value="Dizzy"> Yes
+                            <input type="radio" name="optionsDiabetes" value="Tired"> No
+                            <input type="radio" name="optionsDiabetes" value="Anxious"> Don't Know
+                        </div>
+
+                        <div class="navigate-btn">
+                            <a class='btn btn-default' href="{{ url_for('login') }}" style="float: left;">&larr; Previous</a>
+                            <button class='btn btn-primary' type="submit" class="submit_btn" style="float: right;"> Next </button>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+        </div>
+
+
+
+
+
+            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        </div>
+    </body>
+</html>

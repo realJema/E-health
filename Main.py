@@ -3,78 +3,6 @@ from flask import Flask, render_template, request, session, url_for, redirect
 app = Flask(__name__)
 app.secret_key = 'whoknowsthissecretw'
 
-
-# function for computation
-def symptomes(feeling):
-    feeling_data = {
-                    'Dizzy':
-                            [   ' Head ache',
-                                ' Notious',
-                                ' Feverish',
-                                ' Inbalanced'],
-                    'Ache':
-                            [   ' Severe',
-                                ' Mild',
-                                ' Delocalised',
-                                ' Average'],
-                    'Tired':
-                            [   ' Head ache',
-                                ' Notious',
-                                ' Feverish',
-                                ' Inbalanced'],
-                    'Anxious':
-                            [   ' Severe',
-                                ' Mild',
-                                ' Delocalised',
-                                ' Average']
-                    }
-    if feeling_data[feeling]:
-        return feeling_data[feeling]
-    else:
-        return ['None Found']
-def prescription(symptomes):
-    ''' anaylse the symptomes of the user and determine the prescription to give him'''
-
-    prescription_data = {
-                        ' Head ache': 'Efferalgan',
-                        ' Feverish' : 'Paracetamol',
-                        ' Notious' : 'Paracetamol',
-                        ' Inbalanced' : 'Paracetamol',
-                        ' Severe' : 'Paracetamol',
-                        ' Mild' : 'Paracetamol',
-                        ' Delocalised' : 'Paracetamol',
-                        ' Average' : 'Paracetamol'
-                        }
-    the_prescription = { }
-
-    for symptome in symptomes:
-        the_prescription[symptome] = prescription_data[symptome]
-
-    print(the_prescription)
-
-    return the_prescription
-def infections(symptomes):
-    ''' anaylse the symptomes of the user and determine the infections he has'''
-
-    prescription_data = {
-                        ' Head ache': 'Common Cold',
-                        ' Feverish' : 'Common Cold',
-                        ' Notious' : 'Parasite',
-                        ' Inbalanced' : 'Virus',
-                        ' Severe' : 'Virus',
-                        ' Mild' : 'Virus',
-                        ' Delocalised' : 'Virus',
-                        ' Average' : 'Virus'
-                        }
-    the_Infections = { }
-
-    for symptome in symptomes:
-        the_Infections[symptome] = prescription_data[symptome]
-    return the_Infections
-# end of computation functions
-
-
-
 # routing functions
 @app.route('/')
 def index():
@@ -82,14 +10,14 @@ def index():
 
 @app.route('/terms')
 def terms():
-    return render_template('_02terms.html')
+    return render_template('terms.html')
 
 @app.route('/login')
 def login():
-    return render_template('_03login.html')
+    return render_template('login.html')
 
-@app.route('/submission', methods=['GET', 'POST'])
-def submission():
+@app.route('/symptome1', methods=['GET', 'POST'])
+def symptome1():
 
     session['login'] = True
     try:
@@ -99,43 +27,32 @@ def submission():
     except:
         pass
 
-    if request.method == 'POST':
-        return render_template('_04qn1.html', user=session['user'])
-    else:
-        return redirect(url_for('index'))
+    return render_template('symptome1.html', user=session['user'])
 
-@app.route('/qn1', methods=['GET', 'POST'])
-def qn1():
-    try:
-        session['Weight'] = request.form['optionsWeight']
-        session['Cigarettes'] = request.form['optionsCigarettes']
-        session['Cholesterol'] = request.form['optionsCholesterol']
-        session['Hypertension'] = request.form['optionsHypertension']
-        session['Diabetes'] = request.form['optionsDiabetes']
-    except:
-        pass
+@app.route('/symptome2', methods=['GET', 'POST'])
+def symptome2():
+    return render_template('symptome2.html')
 
-    if request.method == 'POST':
-        # the_symptomes = symptomes(session['feel'])
-        return render_template('_05qn2.html')
-    else:
-        return redirect(url_for('submission'))
+@app.route('/symptome3', methods=['GET', 'POST'])
+def symptome3():
+    return render_template('symptome3.html')
 
-@app.route('/qn2', methods=['GET', 'POST'])
-def qn2():
-    session['feel2'] = []
+@app.route('/symptome4', methods=['GET', 'POST'])
+def symptome4():
+    return render_template('symptome4.html')
 
-    # here we consider the check boxes of option
-    try:
-        session['feel2'].append(request.form['option1'])
-        session['feel2'].append(request.form['option2'])
-        session['feel2'].append(request.form['option3'])
-    except:
-        print('doesnt exist')
+@app.route('/symptome5', methods=['GET', 'POST'])
+def symptome5():
+    return render_template('symptome5.html')
 
-    # the_prescription = prescription(session['feel2'])
-    # the_Infections = infections(session['feel2'])
-    return render_template('_06qn3.html')
+@app.route('/symptome6', methods=['GET', 'POST'])
+def symptome6():
+    return render_template('symptome6.html')
+
+@app.route('/results', methods=['GET', 'POST'])
+def results():
+    return render_template('results.html')
+
 
 @app.route('/logout')
 def logout():
