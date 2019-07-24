@@ -6,28 +6,70 @@
     </head>
     <body>
         <!-- navbar -->
-        <nav class="navbar navbar-light bg-primary">
-          <a class="navbar-brand" href="#">
-            E-Health
-          </a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a class="navbar-brand" href="{{  url_for('index') }}">E-Health</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Consultation <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{  url_for('firstAid') }}">First Aid</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('doctor') }}">Talk 2 Doctor!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us!</a>
+                </li>
+                </ul>
+            </div>
         </nav>
+        <!-- end of navbar -->
+
+
         <br/><br/><br/>
         <div class="container col-md-8">
             <div class="row">
                 <div class="col-md-2">
-                    <a href="{{ url_for('index') }}"> Introduction </a>
-                    <a href="{{ url_for('terms') }}"> Terms & Cond...</a>
-                    <a href="{{ url_for('login') }}"> Login</a>
-                    <a href="{{ url_for('symptome1') }}"> Symptomes </a>
-                    <a href="{{ url_for('results') }}"> Results </a>
-                </div> 
-                <div class="col-md-10 card info-bubble">
-                    <p>These are your results</p>
-
-                </div> 
-            </div> 
-        </div> 
- 
+                    <a class="menu-li" href="{{ url_for('index') }}"> Introduction </a><br/>
+                    <a class="menu-li" href="{{  url_for('terms') }}"> Terms & Cond...</a><br/>
+                    <a class="menu-li" href="{{  url_for('login') }}"> Login</a><br/>
+                    <a class="menu-li" href="{{  url_for('symptome1') }}"> Symptomes </a><br/>
+                    <a class="menu-li active" href="{{  url_for('results') }}"> Results </a>
+                </div>
+                <div class="col-md-10">
+                    <div class="form-group col-md-12 card info-bubble">
+                        <h5> Medical Attention </h5>
+                        <p>Its adviced you get medical attention Immediately</p>
+                    </div>
+                    <div class="form-group col-md-12 card info-bubble">
+                        <h5>Personal Information</h5>
+                        <p> Name: {{ user }}</p>
+                        <p> Gender: {{ gender }}</p>
+                        <p> age: {{ age }}</p>
+                        <p> Obesity: {{ obesity }} ; Smoker: {{ cigar }} ; Cholesterol: {{ chol }} ; Hypertension: {{ hypert }} ; Diabetes: {{ diabetes }}</p>
+                        <p> Duration: {{ duration }}</p>
+                        <p> Recent Trauma: {{ trauma }}</p>
+                        <p> Fever: {{ fever }}</p>
+                    </div>
+                    <div class="form-group col-md-12 card info-bubble">
+                        <h5>Diagnosis</h5>
+                        <p>Potential Illnesses you may be sufferring from</p>
+                    </div>
+                    <div class="form-group col-md-12 card info-bubble">
+                        <h5>Prescription</h5>
+                        <p>These are drugs you could get</p>
+                    </div>
+                    <div class="form-group col-md-12 card info-bubble">
+                        <p>These are your results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
             <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
             <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>

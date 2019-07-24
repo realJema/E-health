@@ -5,24 +5,42 @@
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
-        <!-- navbar -->
-        <nav class="navbar navbar-light bg-primary">
-          <a class="navbar-brand" href="#">
-            E-Health
-          </a>
+       <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a class="navbar-brand" href="{{  url_for('index') }}">E-Health</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('index') }}">Consultation <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{  url_for('firstAid') }}">First Aid</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('doctor') }}">Talk 2 Doctor!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us!</a>
+                </li>
+                </ul>
+            </div>
         </nav>
         <br/><br/><br/>
         <div class="container col-md-8">
             <div class="row">
                 <div class="col-md-2">
-                    <a href="{{ url_for('index') }}"> Introduction </a>
-                    <a href="{{ url_for('terms') }}"> Terms & Cond...</a>
-                    <a href="{{ url_for('login') }}"> Login</a>
-                    <a href="{{ url_for('symptome1') }}"> Symptomes </a>
-                </div> 
+                    <a class="menu-li" href="{{  url_for('index') }}"> Introduction </a><br/>
+                    <a class="menu-li" href="{{  url_for('terms') }}"> Terms & Cond...</a><br/>
+                    <a class="menu-li" href="{{  url_for('login') }}"> Login</a><br/>
+                    <a class="menu-li active" href="{{  url_for('symptome1') }}"> Symptomes </a><br/>
+                    <a class="menu-li" href="{{  url_for('results') }}"> Results </a>
+                </div>
                 <div class="col-md-10 card info-bubble">
-                    <h1>How do you feel?.</h1>
-                    <!-- <p><a href="{{ url_for('index') }}">Continue</a></p> -->
+                    <h1>How do you feel?</h1>
+                    <!-- <p><a class="menu-li" href="{{  url_for('index') }}">Continue</a></p> -->
                     <p>Do you have the following symptomes?</p>
 
                     <form class="form-group" action="{{ url_for('symptome3') }}" method=post>
@@ -44,9 +62,9 @@
                         </div>
                     </form>
                 </div>
-            </div> 
+            </div>
         </div>
-     
+
 
             <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
             <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>

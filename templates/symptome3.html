@@ -5,32 +5,52 @@
         <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body>
-        <!-- navbar -->
-        <nav class="navbar navbar-light bg-primary">
-          <a class="navbar-brand" href="#">
-            E-Health
-          </a>
+       <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+            <a class="navbar-brand" href="{{  url_for('index') }}">E-Health</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('index') }}">Consultation <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{  url_for('firstAid') }}">First Aid</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('doctor') }}">Talk 2 Doctor!</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('about') }}">About Us!</a>
+                </li>
+                </ul>
+            </div>
         </nav>
         <br/><br/><br/>
         <div class="container col-md-8">
             <div class="row">
                 <div class="col-md-2">
-                    <a href="{{ url_for('index') }}"> Introduction </a>
-                    <a href="{{ url_for('terms') }}"> Terms & Cond...</a>
-                    <a href="{{ url_for('login') }}"> Login</a>
-                    <a href="{{ url_for('symptome1') }}"> Symptomes </a>
-                </div> 
+                    <a class="menu-li" href="{{  url_for('index') }}"> Introduction </a><br/>
+                    <a class="menu-li" href="{{  url_for('terms') }}"> Terms & Cond...</a><br/>
+                    <a class="menu-li" href="{{  url_for('login') }}"> Login</a><br/>
+                    <a class="menu-li active" href="{{  url_for('symptome1') }}"> Symptomes </a><br/>
+                    <a class="menu-li" href="{{  url_for('results') }}"> Results </a>
+                </div>
                 <div class="col-md-10 card info-bubble">
                     <p>How bad do you feel on a scale of 1 - 100?</p>
 
-                    <div class="range-slider">
-                      <input class="range-slider__range" type="range" value="100" min="0" max="100">
-                      <span class="range-slider__value">0</span>
-                    </div>
+                    <form class="form-group" action="{{ url_for('symptome4') }}"  method=post>
+                        <div class="range-slider">
+                        <input class="range-slider__range" name="optionsRange" type="range" value="0" min="0" max="100">
+                        <span class="range-slider__value">0</span>
+                        </div>
                     <div class="navigate-btn">
                         <a class='btn btn-default' href="{{ url_for('symptome2') }}" style="float: left;">&larr; Previous</a>
-                        <a class='btn btn-primary' href="{{ url_for('symptome4') }}" style="float: right;"> Next</a>
+                        <button class='btn btn-primary' type="submit" class="submit_btn" style="float: right;"> Next </button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -39,12 +59,12 @@
             <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
             <script src="{{ url_for('static', filename='js/script.js') }}"></script>
             <script src="{{ url_for('static', filename='js/bootstrap-slider.js') }}"></script>
-            <script> 
+            <script>
                     var rangeSlider = function(){
                       var slider = $('.range-slider'),
                           range = $('.range-slider__range'),
                           value = $('.range-slider__value');
-                        
+
                       slider.each(function(){
 
                         value.each(function(){
