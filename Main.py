@@ -146,6 +146,7 @@ def results():
                             illRange = session['illRange'],
                             trauma = session['trauma'],
                             fever = session['fever'],
+                            symptomes = session['symptomes'],
                             prescription = prescription,
                             illness = illness
     )

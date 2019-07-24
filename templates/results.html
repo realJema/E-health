@@ -55,6 +55,12 @@
                         <p> Duration: {{ duration }}</p>
                         <p> Recent Trauma: {{ trauma }}</p>
                         <p> Fever: {{ fever }}</p>
+                        <p>Symptomes: </p>
+                        <div class="form-group">
+                            {% for ill in symptomes %}
+                                <button type="button" class="btn btn-primary btn-sm">{{ ill }}</button>
+                            {% endfor %}
+                        </div>
                     </div>
                     <div class="form-group col-md-12 card info-bubble">
                         <h5>Diagnosis</h5>
