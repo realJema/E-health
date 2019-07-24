@@ -22,6 +22,34 @@ socketio = SocketIO(app)
 
 '''
 
+# drugs and illness defined in here
+drugs = {
+    "Headache": ["Efferalgan", ""],
+    "Stomach pains": ["Efferalgan", ""],
+    "Notious": ["Efferalgan", ""],
+    "Fever": ["Efferalgan", ""],
+    "Body pains": ["Efferalgan", ""],
+    "other":["...", "..."],
+}
+
+
+
+# functions to analyse illness
+def getPrescription(symptomes):
+    prescription = {}
+    for symptome in symptomes:
+        prescription[symptome] = drugs[symptome][0]
+
+    return prescription
+
+def getillness(symptomes):
+    illness = {}
+    for symptome in symptomes:
+        illness[symptome] = drugs[symptome][1]
+
+    return illness
+
+
 # routing functions
 @app.route('/')
 def index():
@@ -72,15 +100,15 @@ def symptome4():
     except:
         pass
 
-    print(session['illRange'])
-    return render_template('symptome4.html')
+    return render_template('symptome4.html', illnesses=drugs)
 
 @app.route('/symptome5', methods=['GET', 'POST'])
 def symptome5():
     try:
-        session['duration']  = request.form['optionsDuration']
+        # convert symtomes to array
+        session['symptomes']  = request.form['sympt'].split(',')
     except:
-        pass
+        print('error getting value')
 
     return render_template('symptome5.html')
 
@@ -100,8 +128,27 @@ def results():
     except:
         pass
 
+    # convert symtomes to array and get prescription
+    prescription = {}
+    prescription = getPrescription(session['symptomes'])
+    illness = getillness(session['symptomes'])
 
-    return render_template('results.html', user = session['user'], gender = session['gender'], age = session['age'], obesity = session['obesity'], cigar = session['cigar'], chol = session['chol'], hypert = session['hypert'], diabetes = session['diabetes'], illRange = session['illRange'], duration = session['duration'],  trauma = session['trauma'],  fever = session['fever'] )
+
+    return render_template('results.html',
+                            user = session['user'],
+                            gender = session['gender'],
+                            age = session['age'],
+                            obesity = session['obesity'],
+                            cigar = session['cigar'],
+                            chol = session['chol'],
+                            hypert = session['hypert'],
+                            diabetes = session['diabetes'],
+                            illRange = session['illRange'],
+                            trauma = session['trauma'],
+                            fever = session['fever'],
+                            prescription = prescription,
+                            illness = illness
+    )
 
 
 # Routes for first aid pages

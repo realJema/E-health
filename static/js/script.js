@@ -3,11 +3,27 @@
 // };
 
 // $('.options-btn').on('click').toggleClass('selected')
-$(function () { $('.popover-toggle').popover('toggle');});
+$(function () { $('.popover-toggle').popover('toggle'); });
+
+let sympt = []
+
+// toggle class for symptomes
+$('.symp').click(function (e) {
+  $(this).toggleClass("btn-outline-primary")
+  $(this).toggleClass("btn-primary")
+
+  sympt.push($(this).text())
+
+  console.log('The sympt', sympt)
+  $("#symptomes").val(sympt);
+
+  // console.log('The val', $(".sympt").val())
+
+ });
 
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 let user_name = null;
-let user_input = 'connected'
+let user_input = 'connected';
 socket.on( 'connect', function() {
   socket.emit( 'my event', {
     data: 'User Connected'

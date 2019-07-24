@@ -39,25 +39,19 @@
                     <a class="menu-li" href="{{  url_for('results') }}"> Results </a>
                 </div>
                 <div class="col-md-10 card info-bubble">
-                    <p>How long have you had these symptomes?</p>
-
-                    <form class="form-group" action="{{ url_for('symptome5') }}" method=post>
-
-                        <div class="radio">
-                            <label> <input type="radio" name="optionsDuration" value="hours"> Few Hours </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optionsDuration" value="days"> Few Days </label>
-                        </div>
-                        <div class="radio">
-                            <label> <input type="radio" name="optionsDuration" value="months"> More than a month </label>
-                        </div>
-
-                        <div class="navigate-btn">
-                            <a class='btn btn-default' href="{{ url_for('symptome3') }}" style="float: left;">&larr; Previous</a>
-                            <button class='btn btn-primary' type="submit" class="submit_btn" style="float: right;"> Next </button>
-                        </div>
-                    </form>
+                    <p>Select your symptomes?</p>
+                     <form class="form-group" action="{{ url_for('symptome5') }}" method=post>
+                        <div class="form-group">
+                            {% for ill, drug in illnesses.items() %}
+                            <button type="button" class="btn btn-outline-primary symp">{{ ill }}</button>
+                            {% endfor %}
+                            <input id="symptomes" name="sympt" style="display: none" value="empty"></input>
+                            <div class="navigate-btn">
+                                <a class='btn btn-default' href="{{ url_for('symptome3') }}" style="float: left;">&larr; Previous</a>
+                                <button class='btn btn-primary' type="submit" class="submit_btn" style="float: right;"> Next </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

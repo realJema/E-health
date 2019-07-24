@@ -59,10 +59,16 @@
                     <div class="form-group col-md-12 card info-bubble">
                         <h5>Diagnosis</h5>
                         <p>Potential Illnesses you may be sufferring from</p>
+                        {% for symptome, ill in illness.items() %}
+                        <p>{{ symptome }} : <b>{{ ill }}</b></p>
+                        {% endfor %}
                     </div>
                     <div class="form-group col-md-12 card info-bubble">
                         <h5>Prescription</h5>
                         <p>These are drugs you could get</p>
+                        {% for symptome, drug in prescription.items() %}
+                        <p>{{ symptome }} : <b>{{ drug }}</b></p>
+                        {% endfor %}
                     </div>
                     <div class="form-group col-md-12 card info-bubble">
                         <p>These are your results</p>
